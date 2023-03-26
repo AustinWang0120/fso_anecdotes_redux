@@ -3,7 +3,15 @@ import { createAnecdote, voteFor } from './reducers/anecdoteReducer'
 
 const App = () => {
   const dispatch = useDispatch()
-  const anecdotes = useSelector(state => state)
+  const anecdotes = useSelector(state => state.sort((a, b) => {
+    if (a.votes < b.votes) {
+      return 1
+    } else if (a.votes > b.votes) {
+      return -1
+    } else {
+      return 0
+    }
+  }))
 
   const vote = (id) => {
     dispatch(voteFor(id))
