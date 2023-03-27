@@ -28,7 +28,6 @@ const anecdoteSlice = createSlice({
     voteFor(state, action) {
       const id = action.payload
       const itemToChange = state.find(item => item.id === id)
-      console.log(JSON.parse(JSON.stringify(state)))
       const changedItem = { ... itemToChange, votes: itemToChange.votes + 1 }
       return state.map(item => item.id === id ? changedItem : item)
     },
