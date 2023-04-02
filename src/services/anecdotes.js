@@ -7,8 +7,17 @@ const getAll = async () => {
   return res.data
 }
 
+const create = async (content) => {
+  const newAnecdote = {
+    content,
+    votes: 0
+  }
+  const res = await axios.post(baseUrl, newAnecdote)
+  return res.data
+}
+
 const myService = {
-  getAll
+  getAll, create
 }
 
 export default myService

@@ -17,11 +17,11 @@ const anecdoteSlice = createSlice({
     voteFor(state, action) {
       const id = action.payload
       const itemToChange = state.find(item => item.id === id)
-      const changedItem = { ... itemToChange, votes: itemToChange.votes + 1 }
+      const changedItem = { ...itemToChange, votes: itemToChange.votes + 1 }
       return state.map(item => item.id === id ? changedItem : item)
     },
     createAnecdote(state, action) {
-      state.push(asObject(action.payload))
+      state.push(action.payload)
     },
     setAnecdotes(state, action) {
       return action.payload
