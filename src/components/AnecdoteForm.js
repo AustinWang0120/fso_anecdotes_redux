@@ -10,12 +10,9 @@ const AnecdoteForm = () => {
     event.preventDefault()
     const content = event.target.content.value
     event.target.content.value = ""
-    // backend
-    const createdAnecdote = await anecdoteService.create(content)
-    // frontend
-    dispatch(createAnecdote(createdAnecdote))
+    dispatch(createAnecdote(content))
     // notification
-    dispatch(setNotification(`You created ${createdAnecdote.content}`))
+    dispatch(setNotification(`You created ${content}`))
     setTimeout(() => {
       dispatch(removeNotification())
     }, 3000)
